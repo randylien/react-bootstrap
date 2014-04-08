@@ -5,6 +5,7 @@ var React          = require('react');
 var ReactTestUtils = require('react/lib/ReactTestUtils');
 var TabbedArea     = require('../cjs/TabbedArea');
 var TabPane        = require('../cjs/TabPane');
+var utils          = require('./utils');
 
 describe('TabbedArea', function () {
   it('Should show the correct tab', function () {
@@ -54,15 +55,17 @@ describe('TabbedArea', function () {
       done();
     }
 
-    var tab2 = <span>Tab2</span>;
+    var tab2 = <span className="tab2">Tab2</span>;
     var instance = ReactTestUtils.renderIntoDocument(
       <TabbedArea onSelect={onSelect} activeKey={1}>
         <TabPane tab="Tab 1" key={1}>Tab 1 content</TabPane>
-        <TabPane tab={tab2} key={2}>Tab 2 content</TabPane>
+        <TabPane tab={tab2} key={2} ref="tab2">Tab 2 content</TabPane>
       </TabbedArea>
     );
 
-    ReactTestUtils.Simulate.click(tab2.getDOMNode());
+    ReactTestUtils.Simulate.click(
+      ReactTestUtils.findRenderedDOMComponentWithClass(instance, 'tab2')
+    );
   });
 
   it('Should have children with the correct DOM properties', function () {
@@ -79,7 +82,7 @@ describe('TabbedArea', function () {
 
   it('Should show the correct initial pane', function () {
     var instance = ReactTestUtils.renderIntoDocument(
-      <TabbedArea initialActiveKey={2}>
+      <TabbedArea defaultActiveKey={2}>
         <TabPane tab="Tab 1" key={1} ref="pane1">Tab 1 content</TabPane>
         <TabPane tab="Tab 2" key={2} ref="pane2">Tab 2 content</TabPane>
       </TabbedArea>
@@ -106,25 +109,24 @@ describe('TabbedArea', function () {
   });
 
   it('Should show the correct tab when selected', function (done) {
-    var tab1 = <span>Tab 1</span>;
+    var tab1 = <span className="tab1">Tab 1</span>;
     var instance = ReactTestUtils.renderIntoDocument(
-      <TabbedArea initalActiveKey={2}>
+      <TabbedArea defaultActiveKey={2} animation={false}>
         <TabPane tab={tab1} key={1} ref="pane1">Tab 1 content</TabPane>
         <TabPane tab="Tab 2" key={2} ref="pane2">Tab 2 content</TabPane>
       </TabbedArea>
     );
 
-    // Override `componentDidUpdate` for now, but this should be replaced
-    // with `ReactTestUtils#nextUpdate()` when it is merged.
-    // @see https://github.com/facebook/react/pull/948
-    instance.componentDidUpdate = function () {
+    utils.nextUpdate(instance, function () {
       assert.equal(instance.refs.pane1.props.active, true);
       assert.equal(instance.refs.pane2.props.active, false);
 
       assert.equal(instance.refs.tabs.props.activeKey, 1);
       done();
-    };
+    });
 
-    ReactTestUtils.Simulate.click(tab1.getDOMNode());
+    ReactTestUtils.Simulate.click(
+      ReactTestUtils.findRenderedDOMComponentWithClass(instance, 'tab1')
+    );
   });
 });
