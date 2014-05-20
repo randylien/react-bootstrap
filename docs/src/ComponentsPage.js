@@ -294,6 +294,14 @@ var ComponentsPage = React.createClass({
                   <ReactPlayground codeText={fs.readFileSync(__dirname + '/../examples/NavBasic.js', 'utf8')} />
                 </div>
 
+                {/* Navbar */}
+                <div className="bs-docs-section">
+                  <h1 id="navbars" className="page-header">Navbars <small>Navbar, Nav, NavItem</small></h1>
+                  <h2 id="navbars-examples">Example navbars</h2>
+
+                  <ReactPlayground codeText={fs.readFileSync(__dirname + '/../examples/NavbarBasic.js', 'utf8')} />
+                </div>
+
                 {/* Tabbed Areas */}
                 <div className="bs-docs-section">
                   <h1 id="tabs" className="page-header">Togglable tabs <small>TabbedArea, TabPane</small></h1>
@@ -373,7 +381,7 @@ var ComponentsPage = React.createClass({
                   <p>Easily highlight new or unread items by adding a <code>{'<Badge>'}</code> to links, Bootstrap navs, and more.</p>
                   <h2 id="badge-static">Example</h2>
                   <ReactPlayground codeText={fs.readFileSync(__dirname + '/../examples/Badge.js', 'utf8')} />
-                  <div class="bs-callout bs-callout-info">
+                  <div className="bs-callout bs-callout-info">
                     <h4>Cross-browser compatibility</h4>
                     <p>Unlike regular Bootstrap badges self collapse even in Internet Explorer 8.</p>
                   </div>
@@ -413,6 +421,18 @@ var ComponentsPage = React.createClass({
                   <h2 id="glyphicon-static">Example</h2>
                   <ReactPlayground codeText={fs.readFileSync(__dirname + '/../examples/Glyphicon.js', 'utf8')} />
                 </div>
+
+                {/* Tables */}
+                <div className="bs-docs-section">
+                  <h1 id="tables" className="page-header">Tables</h1>
+
+                  <h2 id="table-basic">Example</h2>
+                  <p>Use the <code>striped</code>, <code>bordered</code>, <code>condensed</code> and <code>hover</code> props to customise the table.</p>
+                  <ReactPlayground codeText={fs.readFileSync(__dirname + '/../examples/TableBasic.js', 'utf8')} />
+                  <h2 id="table-responsive">Responsive</h2>
+                  <p>Add <code>responsive</code> prop to make them scroll horizontally up to small devices (under 768px). When viewing on anything larger than 768px wide, you will not see any difference in these tables.</p>
+                  <ReactPlayground codeText={fs.readFileSync(__dirname + '/../examples/TableResponsive.js', 'utf8')} />
+                </div>
               </div>
 
               <div className="col-md-3">
@@ -436,16 +456,18 @@ var ComponentsPage = React.createClass({
                     <NavItem href="#popovers" key={7}>Popovers</NavItem>
                     <NavItem href="#progress" key={8}>Progress bars</NavItem>
                     <NavItem href="#navs" key={9}>Navs</NavItem>
-                    <NavItem href="#tabs" key={10}>Togglable tabs</NavItem>
-                    <NavItem href="#alerts" key={11}>Alerts</NavItem>
-                    <NavItem href="#carousels" key={12}>Carousels</NavItem>
-                    <NavItem href="#grids" key={13}>Grids</NavItem>
-                    <NavItem href="#labels" key={14}>Labels</NavItem>
-                    <NavItem href="#badges" key={15}>Badges</NavItem>
-                    <NavItem href="#jumbotron" key={16}>Jumbotron</NavItem>
-                    <NavItem href="#page-header" key={17}>Page Header</NavItem>
-                    <NavItem href="#wells" key={18}>Wells</NavItem>
-                    <NavItem href="#glyphicons" key={19}>Glyphicons</NavItem>
+                    <NavItem href="#navbars" key={10}>Navbars</NavItem>
+                    <NavItem href="#tabs" key={11}>Togglable tabs</NavItem>
+                    <NavItem href="#alerts" key={12}>Alerts</NavItem>
+                    <NavItem href="#carousels" key={13}>Carousels</NavItem>
+                    <NavItem href="#grids" key={14}>Grids</NavItem>
+                    <NavItem href="#labels" key={15}>Labels</NavItem>
+                    <NavItem href="#badges" key={16}>Badges</NavItem>
+                    <NavItem href="#jumbotron" key={17}>Jumbotron</NavItem>
+                    <NavItem href="#page-header" key={18}>Page Header</NavItem>
+                    <NavItem href="#wells" key={19}>Wells</NavItem>
+                    <NavItem href="#glyphicons" key={20}>Glyphicons</NavItem>
+                    <NavItem href="#tables" key={21}>Tables</NavItem>
                   </Nav>
                   <a className="back-to-top" href="#top">
                   Back to top
